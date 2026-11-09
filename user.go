@@ -77,7 +77,7 @@ type User struct {
 
 	// The flags on a user's account.
 	// Only available when the request is authorized via a Bearer token.
-	Flags int `json:"flags"`
+	Flags string `json:"flags"`
 }
 
 // String returns a unique identifier of the form username#discriminator

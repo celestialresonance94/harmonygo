@@ -23,7 +23,7 @@ var (
 	EndpointSmActive   = EndpointSm + "active.json"
 	EndpointSmUpcoming = EndpointSm + "upcoming.json"
 
-	EndpointDiscord        = "https://discord.com/"
+	EndpointDiscord        = "https://api.harmony.melodychat.org/"
 	EndpointAPI            = EndpointDiscord + "api/v" + APIVersion + "/"
 	EndpointGuilds         = EndpointAPI + "guilds/"
 	EndpointChannels       = EndpointAPI + "channels/"
