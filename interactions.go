@@ -107,17 +107,17 @@ type ApplicationCommandOption struct {
 	// So I commented it, until it will be officially on the docs.
 	// Default     bool                              `json:"default"`
 
-	ChannelTypes []ChannelType               `json:"channel_types,omitempty"`
+	ChannelTypes []ChannelType               `json:"-"`
 	Required     bool                        `json:"required"`
 	Options []*ApplicationCommandOption       `json:"options,omitempty"`
 
 	// NOTE: mutually exclusive with Choices.
-	Autocomplete bool                              `json:"autocomplete,omitempty"`
+	Autocomplete bool                              `json:"-"`
 	Choices []*ApplicationCommandOptionChoice `json:"choices,omitempty"`
 	// Minimal value of number/integer option.
-	MinValue *float64 `json:"min_value,omitempty"`
+	MinValue *float64 `json:"-"`
 	// Maximum value of number/integer option.
-	MaxValue float64 `json:"max_value,omitempty"`
+	MaxValue float64 `json:"-"`
 	// Minimum length of string option.
 	MinLength *int `json:"min_length,omitempty"`
 	// Maximum length of string option.
