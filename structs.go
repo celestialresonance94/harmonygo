@@ -473,7 +473,7 @@ type ThreadsList struct {
 type AddedThreadMember struct {
 	*ThreadMember
 	Member   *Member   `json:"member"`
-	Presence *Presence `json:"presence"`
+	Presence *Presence `json:"presence,omitempty"`
 }
 
 // ForumDefaultReaction specifies emoji to use as the default reaction to a forum post.
@@ -1955,18 +1955,18 @@ type Identify struct {
 	Compress       bool                `json:"compress"`
 	LargeThreshold int                 `json:"large_threshold"`
 	Shard          *[2]int             `json:"shard,omitempty"`
-	Presence       GatewayStatusUpdate `json:"presence,omitempty"`
+	Presence       *GatewayStatusUpdate `json:"presence,omitempty"`
 	Intents        Intent              `json:"intents"`
 }
 
 // IdentifyProperties contains the "properties" portion of an Identify packet
 // https://discord.com/developers/docs/topics/gateway#identify-identify-connection-properties
 type IdentifyProperties struct {
-	OS              string `json:"$os"`
-	Browser         string `json:"$browser"`
-	Device          string `json:"$device"`
-	Referer         string `json:"$referer"`
-	ReferringDomain string `json:"$referring_domain"`
+	OS              string `json:"os,omitempty"`
+	Browser         string `json:"browser,omitempty"`
+	Device          string `json:"device,omitempty"`
+	Referer         string `json:"referer,omitempty"`
+	ReferringDomain string `json:"referring_domain,omitempty"`
 }
 
 // StageInstance holds information about a live stage.

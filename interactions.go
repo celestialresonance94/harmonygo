@@ -47,7 +47,7 @@ type ApplicationCommand struct {
 
 	Description              string                      `json:"description,omitempty"`
 	DescriptionLocalizations *map[Locale]string          `json:"description_localizations,omitempty"`
-	Options                  []*ApplicationCommandOption `json:"options"`
+	Options []*ApplicationCommandOption       `json:"options,omitempty"`
 }
 
 // ApplicationCommandOptionType indicates the type of a slash command's option.
@@ -107,13 +107,13 @@ type ApplicationCommandOption struct {
 	// So I commented it, until it will be officially on the docs.
 	// Default     bool                              `json:"default"`
 
-	ChannelTypes []ChannelType               `json:"channel_types"`
+	ChannelTypes []ChannelType               `json:"channel_types,omitempty"`
 	Required     bool                        `json:"required"`
-	Options      []*ApplicationCommandOption `json:"options"`
+	Options []*ApplicationCommandOption       `json:"options,omitempty"`
 
 	// NOTE: mutually exclusive with Choices.
-	Autocomplete bool                              `json:"autocomplete"`
-	Choices      []*ApplicationCommandOptionChoice `json:"choices"`
+	Autocomplete bool                              `json:"autocomplete,omitempty"`
+	Choices []*ApplicationCommandOptionChoice `json:"choices,omitempty"`
 	// Minimal value of number/integer option.
 	MinValue *float64 `json:"min_value,omitempty"`
 	// Maximum value of number/integer option.
@@ -318,7 +318,7 @@ type ApplicationCommandInteractionData struct {
 	Resolved *ApplicationCommandInteractionDataResolved `json:"resolved"`
 
 	// Slash command options
-	Options []*ApplicationCommandInteractionDataOption `json:"options"`
+	Options []*ApplicationCommandInteractionDataOption `json:"options,omitempty"`
 	// Target (user/message) id on which context menu command was called.
 	// The details are stored in Resolved according to command type.
 	TargetID string `json:"target_id"`
