@@ -1,9 +1,5 @@
 package discordgo
 
-import (
-	"strconv"
-)
-
 // UserFlags is the flags of "user" (see UserFlags* consts)
 // https://discord.com/developers/docs/resources/user#user-object-user-flags
 type UserFlags int
@@ -81,7 +77,7 @@ type User struct {
 
 	// The flags on a user's account.
 	// Only available when the request is authorized via a Bearer token.
-	Flags strconv.Atoi(int) `json:"flags"`
+	Flags int `json:"flags,string"`
 }
 
 // String returns a unique identifier of the form username#discriminator
