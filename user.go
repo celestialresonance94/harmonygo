@@ -66,7 +66,7 @@ type User struct {
 	// The public flags on a user's account.
 	// This is a combination of bit masks; the presence of a certain flag can
 	// be checked by performing a bitwise AND between this int and the flag.
-	PublicFlags UserFlags `json:"public_flags"`
+	PublicFlags UserFlags `json:"public_flags,string"`
 
 	// The type of Nitro subscription on a user's account.
 	// Only available when the request is authorized via a Bearer token.
