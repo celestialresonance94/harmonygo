@@ -1,5 +1,10 @@
 package discordgo
 
+import (
+    "encoding/json"
+    "strconv"
+)
+
 // UserFlags is the flags of "user" (see UserFlags* consts)
 // https://discord.com/developers/docs/resources/user#user-object-user-flags
 type UserFlags int
@@ -21,6 +26,30 @@ const (
 	UserFlagVerifiedBotDeveloper      UserFlags = 1 << 17
 	UserFlagDiscordCertifiedModerator UserFlags = 1 << 18
 )
+
+func (f *UserFlags) UnmarshalJSON(data []byte) error {
+    var num int
+
+    // Try a JSON number first
+    if err := json.Unmarshal(data, &num); err == nil {
+        *f = UserFlags(num)
+        return nil
+    }
+
+    // Try a JSON string
+    var str string
+    if err := json.Unmarshal(data, &str); err != nil {
+        return err
+    }
+
+    num, err := strconv.Atoi(str)
+    if err != nil {
+        return err
+    }
+
+    *f = UserFlags(num)
+    return nil
+}
 
 // A User stores all data for an individual Discord user.
 type User struct {
@@ -66,7 +95,7 @@ type User struct {
 	// The public flags on a user's account.
 	// This is a combination of bit masks; the presence of a certain flag can
 	// be checked by performing a bitwise AND between this int and the flag.
-	PublicFlags UserFlags `json:"public_flags,string"`
+	PublicFlags UserFlags `json:"public_flags"`
 
 	// The type of Nitro subscription on a user's account.
 	// Only available when the request is authorized via a Bearer token.
@@ -77,7 +106,7 @@ type User struct {
 
 	// The flags on a user's account.
 	// Only available when the request is authorized via a Bearer token.
-	Flags int `json:"flags,string"`
+	Flags UserFlags `json:"flags"`
 }
 
 // String returns a unique identifier of the form username#discriminator
