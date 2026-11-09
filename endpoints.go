@@ -34,7 +34,7 @@ var (
 	EndpointStickers       = EndpointAPI + "stickers/"
 	EndpointStageInstances = EndpointAPI + "stage-instances"
 
-	EndpointCDN             = "https://cdn.discordapp.com/"
+	EndpointCDN             = "https://cdn.harmony.melodychat.org/"
 	EndpointCDNAttachments  = EndpointCDN + "attachments/"
 	EndpointCDNAvatars      = EndpointCDN + "avatars/"
 	EndpointCDNIcons        = EndpointCDN + "icons/"
